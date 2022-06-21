@@ -35,3 +35,19 @@ WHERE
   entidad = "Ciudad_de_México" and tipo_de_delito = "Robo"
 GROUP BY
   tipo_de_delito ,ano;
+  
+-- Robo vs Robo con Violencia
+
+SELECT
+rt.ano,
+--rt.tipo_de_delito,
+sum(rt.total) as robos_totales,
+sum(rv.total_con_violencia) as robo_con_viol,
+round(sum(rv.total_con_violencia)/sum(rt.total) * 100) as porcentaje_con_violencia
+FROM
+  `evocative-ethos-349614.violencia_mexico.robo_total` as rt
+JOIN
+  `evocative-ethos-349614.violencia_mexico.robo_con_violencia_ano` as rv
+  ON rt.ano = rv.ano
+GROUP BY
+  rt.ano, rt.tipo_de_delito;
