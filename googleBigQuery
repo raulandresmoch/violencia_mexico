@@ -22,3 +22,16 @@ WHERE
   tipo_de_delito = "Secuestro"
 GROUP BY
   ano, entidad;
+
+-- Analisis de la ciudad de Mexico, Robo
+
+SELECT
+ano,
+tipo_de_delito,
+sum(total) as total
+FROM
+  `evocative-ethos-349614.violencia_mexico.info`
+WHERE
+  entidad = "Ciudad_de_México" and tipo_de_delito = "Robo"
+GROUP BY
+  tipo_de_delito ,ano;
