@@ -1,0 +1,24 @@
+-- Buscando el numero de homicidios (Doloso y no Doloso) por Entidad y por ano
+
+SELECT 
+  ano,
+  entidad,
+  sum(total) as homicidios
+FROM `evocative-ethos-349614.violencia_mexico.info`
+
+WHERE
+  tipo_de_delito = "Homicidio"
+GROUP BY
+  ano, entidad;
+
+-- Buscando el numero de secuestros por Entidad y por ano
+SELECT 
+  ano,
+  entidad,
+  sum(total) as secuestros
+FROM `evocative-ethos-349614.violencia_mexico.info`
+
+WHERE
+  tipo_de_delito = "Secuestro"
+GROUP BY
+  ano, entidad;
